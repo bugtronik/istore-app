@@ -16,7 +16,8 @@ const Categories = ({categories}: Props) => {
             <Text style={styles.titleBtn}>Tout voir</Text>
         </TouchableOpacity>
         </View>
-        <FlatList 
+        <FlatList
+        horizontal
             data={categories} 
             keyExtractor={(item) => item.id.toString()} 
             renderItem={({item, index}) => (

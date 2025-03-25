@@ -36,12 +36,13 @@ export default ProductItem
 const styles = StyleSheet.create({
     container: {
         width: width / 2 - 10,
+        flex: 1
     },
     productImg: {
         width: '100%',
         height: 200,
         borderRadius: 15,
-        marginBottom: 10
+        marginBottom: 10,
     },
     bookmarkBtn: {
         position: 'absolute',

@@ -22,7 +22,7 @@ const HomeScreen = (props: Props) => {
 	}, []);
 
 	const getProducts = async () => {
-		const URL = `http://10.0.2.2:3000/products`;
+		const URL = `http://172.22.215.203:8000/products`;
 		const response = await axios.get(URL);
 
 		//console.log(response.data);
@@ -31,7 +31,7 @@ const HomeScreen = (props: Props) => {
 	};
 
 	const getCategories = async () => {
-		const URL = `http://10.0.2.2:3000/categories`;
+		const URL = `http://172.22.215.203:8000/categories`;
 		const response = await axios.get(URL);
 
 		//console.log(response.data);
@@ -52,6 +52,4 @@ const HomeScreen = (props: Props) => {
 
 export default HomeScreen
 
-const styles = StyleSheet.create({
-  
-})
+const styles = StyleSheet.create({})

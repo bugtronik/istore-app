@@ -2,7 +2,7 @@
   "saleProducts": [
     {
       "id": 29,
-      "title": "Mid-Century Modern Wooden Dining Table",
+      "title": "Table à manger en bois moderne du milieu du siècle",
       "price": 24,
       "description": "Elevate your dining room with this sleek Mid-Century Modern dining table, featuring an elegant walnut finish and tapered legs for a timeless aesthetic. Its sturdy wood construction and minimalist design make it a versatile piece that fits with a variety of decor styles. Perfect for intimate dinners or as a stylish spot for your morning coffee.",
       "images": [
@@ -107,7 +107,7 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Chaussures",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
       }
     },
@@ -123,7 +123,7 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Chaussures",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
       }
     },
@@ -139,7 +139,7 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Chaussures",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
       }
     },
@@ -147,7 +147,7 @@
       "id": 38,
       "title": "Vibrant Runners: Bold Orange & Blue Sneakers",
       "price": 27,
-      "description": "Step into style with these eye-catching sneakers featuring a striking combination of orange and blue hues. Designed for both comfort and fashion, these shoes come with flexible soles and cushioned insoles, perfect for active individuals who don't compromise on style. The reflective silver accents add a touch of modernity, making them a standout accessory for your workout or casual wear.",
+      "description": "Step into style with these eye-catching sneakers featuring a striking combination of orange and blue hues. Designed for both comfort and fashion, these Chaussures come with flexible soles and cushioned insoles, perfect for active individuals who don't compromise on style. The reflective silver accents add a touch of modernity, making them a standout accessory for your workout or casual wear.",
       "images": [
         "https://i.imgur.com/hKcMNJs.jpeg",
         "https://i.imgur.com/NYToymX.jpeg",
@@ -155,7 +155,7 @@
       ],
       "category": {
         "id": 4,
-        "name": "Shoes",
+        "name": "Chaussures",
         "image": "https://i.imgur.com/qNOjJje.jpeg"
       }
     }
@@ -331,7 +331,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -347,7 +347,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -363,7 +363,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -379,7 +379,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -395,7 +395,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -411,7 +411,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -427,7 +427,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -443,7 +443,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -459,7 +459,7 @@
       ],
       "category": {
         "id": 2,
-        "name": "Electronics",
+        "name": "Electroniques",
         "image": "https://i.imgur.com/ZANVnHE.jpeg"
       }
     },
@@ -483,32 +483,32 @@
   "categories": [
     {
       "id": 1,
-      "name": "Clothes",
+      "name": "Vêtements",
       "image": "https://i.imgur.com/QkIa5tT.jpeg"
     },
     {
       "id": 2,
-      "name": "Electronics",
+      "name": "Electroniques",
       "image": "https://i.imgur.com/ZANVnHE.jpeg"
     },
     {
       "id": 3,
-      "name": "Furniture",
+      "name": "Fournitures",
       "image": "https://i.imgur.com/Qphac99.jpeg"
     },
     {
       "id": 4,
-      "name": "Shoes",
+      "name": "Chaussures",
       "image": "https://i.imgur.com/qNOjJje.jpeg"
     },
     {
       "id": 5,
-      "name": "Jewellery",
-      "image": "https://pngimagesfree.com/wp-content/uploads/Gold-Jewellery-Necklaces-PNG@.png"
+      "name": "Bijouterie",
+      "image": "https://pngimagesfree.com/wp-content/uploads/Gold-Bijouterie-Necklaces-PNG@.png"
     },
     {
       "id": 6,
-      "name": "Miscellaneous",
+      "name": "Divers",
       "image": "https://i.imgur.com/BG8J0Fj.jpg"
     }
   ],

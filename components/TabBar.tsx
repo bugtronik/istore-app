@@ -1,6 +1,4 @@
 import { View, Platform, StyleSheet, LayoutChangeEvent } from 'react-native';
-import { useLinkBuilder, useTheme } from '@react-navigation/native';
-import { Text, PlatformPressable } from '@react-navigation/elements';
 import  {BottomTabBarProps} from '@react-navigation/bottom-tabs'
 import TabBarButton from './TabBarButton';
 import { Colors } from '@/constants/Colors';
@@ -34,14 +32,15 @@ export function TabBar({ state, descriptors, navigation } : BottomTabBarProps) {
 
   return (
     <View onLayout={onTabBarLayout} style={styles.tabbar}>
-        <Animated.View style={{
+        <Animated.View 
+          	style={[animatedStyle, {
             position: 'absolute', 
             backgroundColor: Colors.primary,
             top: 0,
             left: 20,
             height: 2,
             width: buttonWidth / 2,
-            }} />
+            }]} />
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
