@@ -7,6 +7,7 @@ import Header from '@/components/Header'
 import ProductItem from '@/components/ProductItem'
 import ProductList from '@/components/ProductList'
 import Categories from '@/components/Categories'
+import FlashSale from '@/components/FlashSale'
 
 type Props = {}
 
@@ -45,6 +46,7 @@ const HomeScreen = (props: Props) => {
 				header: () => <Header />
 			}} />
 			<Categories categories={categories} />
+			<FlashSale />
 			<ProductList products={products} />
 		</>
 	)
