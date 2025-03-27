@@ -24,9 +24,6 @@ const TabBarButton = (props: Props) => {
                 <Text style={styles.badgeText}>3</Text>
             </View>
         )}
-        {icon[routeName]({
-            color: isFocused ? Colors.primary : Colors.black,
-        })}
         <Text style={{ color: isFocused ? "#673ab7" : "#222" }}>
             {label}
         </Text>
