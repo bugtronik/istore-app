@@ -1,11 +1,15 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Colors } from '@/constants/Colors'
 import { Ionicons } from '@expo/vector-icons'
+import { ProductType } from '@/types/type'
+import ProductItem from './ProductItem'
 
-type Props = {}
+type Props = {
+    products: ProductType[]
+}
 
-const FlashSale = (props: Props) => {
+const FlashSale = ({products}: Props) => {
 
     const saleEndDate = new Date();
     //saleEndDate.setFullYear(2024, 9, 2);
@@ -66,6 +70,21 @@ const FlashSale = (props: Props) => {
                 <Text style={styles.titleBtn}>Tout voir</Text>
             </TouchableOpacity>
         </View>
+        <FlatList
+            data={products}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{
+                marginLeft: 20, 
+                paddingRight: 20,
+                }}
+            keyExtractor={(item) => item.id.toString()} 
+            renderItem={({item, index}) => (
+                <View style={{marginRight: 20}}>
+                <ProductItem index={index} item={item} />
+                </View>
+            )} 
+        />
     </View>
   )
 }
@@ -79,8 +98,8 @@ const styles = StyleSheet.create({
     titleWrapper: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 10,
-        marginHorizontal: 20
+        marginBottom: 20,
+        marginHorizontal: 20,
     },
     title: {
         fontSize: 18,
