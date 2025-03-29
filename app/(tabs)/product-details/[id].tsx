@@ -1,16 +1,18 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { useLocalSearchParams } from 'expo-router'
+import { router, Stack, useLocalSearchParams } from 'expo-router'
 import axios from 'axios'
 import { ProductType } from '@/types/type'
 import ImageSlider from '@/components/ImageSlider'
 import { Ionicons } from '@expo/vector-icons'
 import { Colors } from '@/constants/Colors';
+import {useHeaderHeight} from '@react-navigation/elements'
+import Animated, { FadeInDown, SlideInDown } from 'react-native-reanimated'
 
 type Props = {}
 
 const ProductDetails = (props: Props) => {
-    const {id} = useLocalSearchParams();
+    const { id, productType } = useLocalSearchParams();
     const [product, setProduct] = useState<ProductType>();
 
     useEffect(() => {
@@ -18,18 +20,42 @@ const ProductDetails = (props: Props) => {
     }, []);
 
     const getProductDetails = async () => {
-        const URL = `http://172.22.215.203:8000/saleProducts/${id}`;
+        const URL = 
+        productType === "sale"
+        ? `http://172.22.215.203:8000/saleProducts/${id}` 
+        : `http://172.22.215.203:8000/products/${id}`;
         const response = await axios.get(URL);
 
-        console.log('Product Details ', response.data);
+        console.log('Product Details', response.data);
         setProduct(response.data);
-    }
+    };
+
+    const headerHeight = useHeaderHeight();
+
   return (
-    <View>
-        {product && <ImageSlider imageList={product.images} />}
+    <>
+    <Stack.Screen options={{ 
+        title: "Détails du produit", 
+        headerTransparent: true, 
+        headerLeft: () => (
+        <TouchableOpacity onPress={() => router.back()}>
+            <Ionicons name="arrow-back" size={24} color={Colors.black} />
+        </TouchableOpacity>
+    ),
+    headerRight: () => (
+        <TouchableOpacity>
+            <Ionicons name="cart-outline" size={24} color={Colors.black} />
+        </TouchableOpacity>
+    )
+    }} />
+    <ScrollView style={{marginTop: headerHeight, marginBottom: 90}}>
         {product && 
+            <Animated.View entering={FadeInDown.delay(300).duration(500)}>
+                <ImageSlider imageList={product.images} />
+            </Animated.View>}
+        {product && (
         <View style={styles.container}>
-            <View style={styles.ratingWrapper}>
+            <Animated.View style={styles.ratingWrapper} entering={FadeInDown.delay(500).duration(500)}>
                 <View style={styles.ratingWrapper}>
                 <Ionicons name="star" size={20} color={"#D4AF37"} />
                 <Text style={styles.rating}>
@@ -39,18 +65,34 @@ const ProductDetails = (props: Props) => {
                 <TouchableOpacity>
                     <Ionicons name="heart-outline" size={22} color={Colors.black} />
                 </TouchableOpacity>
-            </View>
-            <Text style={styles.title}>{product.title}</Text>
-            <View style={styles.priceWrapper}>
+            </Animated.View>
+            <Animated.Text 
+                style={styles.title} 
+                entering={FadeInDown.delay(700).duration(500)}
+            >
+                {product.title}
+            </Animated.Text>
+            <Animated.View 
+                style={styles.priceWrapper} 
+                entering={FadeInDown.delay(900).duration(500)}
+            >
                 <Text style={styles.price}>{product.price} F CFA</Text>
                 <View style={styles.priceDiscount}>
                     <Text style={styles.priceDiscountText}>6% off</Text>
                 </View>
                 <Text style={styles.oldPrice}>{product.price + 2} F CFA</Text>
-            </View>
-            <Text style={styles.description}>{product.description}</Text>
+            </Animated.View>
+            <Animated.Text 
+                style={styles.description}
+                entering={FadeInDown.delay(1100).duration(500)}
+            >
+                {product.description}
+            </Animated.Text>
 
-            <View style={styles.productVariationWrapper}>
+            <Animated.View 
+                style={styles.productVariationWrapper} 
+                entering={FadeInDown.delay(1300).duration(500)}
+            >
                 <View style={styles.productVariationType}>
                     <Text style={styles.productVariationTitle}>Couleur</Text>
                     <View style={styles.productVariationValueWrapper}>
@@ -66,10 +108,46 @@ const ProductDetails = (props: Props) => {
                 </View>
                 <View style={styles.productVariationType}>
                     <Text style={styles.productVariationTitle}>Taille</Text>
+                    <View style={styles.productVariationValueWrapper}>
+                        <View style={[styles.productVariationSizeValue, {borderColor: Colors.primary}]}>
+                            <Text style={[styles.productVariationSizeValueText, {color: Colors.primary, fontWeight: "bold"}]}>S</Text>
+                        </View>
+                        <View style={styles.productVariationSizeValue}>
+                            <Text style={styles.productVariationSizeValueText}>M</Text>
+                        </View>
+                        <View style={styles.productVariationSizeValue}>
+                            <Text style={styles.productVariationSizeValueText}>L</Text>
+                        </View>
+                        <View style={styles.productVariationSizeValue}>
+                            <Text style={styles.productVariationSizeValueText}>XL</Text>
+                        </View>
+                    </View>
                 </View>
-            </View>
-        </View>}
-    </View>
+            </Animated.View>
+        </View>
+        )}
+    </ScrollView>
+    <Animated.View 
+        style={styles.buttonWrapper} 
+        entering={SlideInDown.delay(500).duration(500)}
+    >
+        <TouchableOpacity style={[
+            styles.button, 
+            { 
+                backgroundColor: Colors.white, 
+                borderColor: Colors.primary, 
+                borderWidth: 1,
+            }
+            ]}
+        >
+            <Ionicons name="cart-outline" size={20} color={Colors.primary} />
+            <Text style={[styles.buttonText, { color: Colors.primary } ]}>Ajouter au panier</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Acheter maintenant</Text>
+        </TouchableOpacity>
+    </Animated.View>
+    </>
   )
 }
 
@@ -159,5 +237,52 @@ const styles = StyleSheet.create({
         height: 30,
         borderRadius: 15,
         backgroundColor: Colors.extraLightGray
+    },
+    productVariationSizeValue: {
+        width: 50,
+        height: 30,
+        borderRadius: 5,
+        backgroundColor: Colors.extraLightGray,
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 1,
+    },
+    productVariationSizeValueText: {
+        fontSize: 12,
+        fontWeight: "500",
+        color: Colors.black,
+    },
+    buttonWrapper: {
+        position: "absolute",
+        height: 90,
+        padding: 20,
+        bottom: 0,
+        width: "100%",
+        backgroundColor: Colors.white,
+        flexDirection: "row",
+        gap: 10,
+    },
+    button: {
+        flex: 1,
+        flexDirection: "row",
+        backgroundColor: Colors.primary,
+        height: 40,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 5,
+        gap: 5,
+        elevation: 5,
+        shadowColor: Colors.black,
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+    },
+    buttonText: {
+        fontSize: 16,
+        fontWeight: "500",
+        color: Colors.white
     }
 })
