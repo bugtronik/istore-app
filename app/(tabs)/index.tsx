@@ -40,7 +40,7 @@ const HomeScreen = (props: Props) => {
 		//console.log(response.data);
 		setCategories(response.data);
 		setIsLoading(false);
-	}
+	};
 
 	const getSaleProducts = async () => {
 		const URL = `http://172.22.215.203:8000/saleProducts`;
